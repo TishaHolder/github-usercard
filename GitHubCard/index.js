@@ -124,7 +124,7 @@ function cardCreator(userDataObject) {
           paragraphUserName.textContent = userDataObject.login;
 
           const paragraphLocation = document.createElement("p");
-          paragraphLocation.textContent = userDataObject.location;
+          paragraphLocation.textContent = `Location: ${userDataObject.location}`;
           
           const paragraphProfile = document.createElement("p");
           paragraphProfile.textContent = "Profile: ";
@@ -133,13 +133,13 @@ function cardCreator(userDataObject) {
               linkProfile.textContent = userDataObject.html_url;
 
           const paragraphFollowers = document.createElement("p");
-          paragraphFollowers.textContent = userDataObject.followers;
+          paragraphFollowers.textContent = `Followers: ${userDataObject.followers}`;
 
           const paragraphFollowing = document.createElement("p");
-          paragraphFollowing.textContent = userDataObject.following;
+          paragraphFollowing.textContent = `Following: ${userDataObject.following}`;
 
           const paragraphBio = document.createElement("p");
-          paragraphBio.textContent = userDataObject.bio;  
+          paragraphBio.textContent = `Bio: ${userDataObject.bio}`;  
           
   //add elements to parent containers
   divCard.appendChild(imageCard);
