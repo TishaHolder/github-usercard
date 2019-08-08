@@ -10,7 +10,7 @@ axios.get("https://api.github.com/users/TishaHolder")
     .then( response => {      
 
         // deal with the response data in here
-        console.log(response.data);  
+        console.log(response);  
 
         const newGitHubRecord = cardCreator(response.data);
         cardsContainer.appendChild(newGitHubRecord);         
@@ -33,7 +33,6 @@ axios.get("https://api.github.com/users/TishaHolder")
 */
 
 
-
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
           , manually find some other users' github handles, or use the list found 
@@ -44,10 +43,10 @@ axios.get("https://api.github.com/users/TishaHolder")
           user, and adding that card to the DOM.
 */
 
-const followersArray = ["tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
+const instructorArray = ["tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
 
-followersArray.forEach ( follower => {
-  axios.get(`https://api.github.com/users/${follower}`)
+instructorArray.forEach ( instructor => {
+  axios.get(`https://api.github.com/users/${instructor}`)
   .then( response => {
 
     const newGitHubRecord = cardCreator(response.data);
@@ -59,6 +58,28 @@ followersArray.forEach ( follower => {
 })
 
 });
+
+/**************************STRETCH TASK***************************/
+/*Instead of manually creating a list of followers, do it programmatically. Create a function that requests the 
+followers data from the API after it has received your data and create a card for each of your followers. Hint: 
+you can chain promises.*/
+
+axios.get("https://api.github.com/users/TishaHolder/followers")
+    .then( response => {      
+
+        // deal with the response data in here
+        console.log(response.data);  
+                
+        response.data.forEach( follower => {
+          const newFollower = cardCreator(follower);
+          cardsContainer.appendChild(newFollower);
+        })
+       
+    })
+    .catch( err => {
+        // deal with the error in here
+        console.log("Error:", err);
+    })
 
 
 /* Step 3: Create a function that accepts a single object as its only argument,
@@ -144,3 +165,5 @@ function cardCreator(userDataObject) {
   luishrd
   bigknell
 */
+
+
